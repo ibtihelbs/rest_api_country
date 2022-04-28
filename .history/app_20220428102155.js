@@ -18,6 +18,7 @@ let _html=(Data, index)=>{
 let search=document.querySelector("input");
 let search_country=(data)=>{
     search.addEventListener("input",(e)=>{
+       // console.log(country_info);
         let value=e.target.value.toLowerCase();
         let countries= document.querySelectorAll(".country");
          //const visible = user.tech.includes(value);
@@ -47,18 +48,8 @@ let search_by_region=(data)=>{
 
      })       
 }
-let findCountryIndex=(data, neighbor)=>{
-   
-   let n = neighbor.toLowerCase();
-   let includes=(e)=>{
-   return e.alpha3Code.toLowerCase().includes(n)
-   }
-   let index=data.findIndex(includes);
-   let countryName=data[index].name;
-   return {index , countryName};
-   
-}
-let country=(data,Gdata)=>{
+let findC
+let country=(data)=>{
    return`<img src="${data.flag}" alt="">
    <div class="country-wrap">
    <div class="x2-column"><h1>${data.name}</h1></div>
@@ -85,7 +76,7 @@ let country=(data,Gdata)=>{
        ${
           data.borders ?
            
-            data.borders.map(function(item){ return `<a href="country.html?id=${findCountryIndex(Gdata, item).index}">${findCountryIndex(Gdata, item).countryName}</a>`}).join(" "): 
+            data.borders.map(function(item){ return "<button>"+item+"</button>"}).join(" "): 
              `<button disabled="disabled">this is an island</button>`}
        
        </div>
@@ -96,28 +87,18 @@ let country=(data,Gdata)=>{
 async function Data_app() {
     const response = await fetch('https://restcountries.com/v2/all');
     const data = await response.json();
-    console.log(data)
+   // console.table(data);
+   // console.log(data);
    
     if(country_id){
-        country_info= data.map((item, index)=>{
-            return{name: item.name, alpha3Code:item.alpha3Code}
-        })
-        
-        main.innerHTML =country(data[country_id],country_info);
-        
-        
+        main.innerHTML =country(data[country_id]);
     }else{
         country_info = data.map((item, index)=>{
             document.getElementById("countries").innerHTML +=_html(item ,index);
             return{name: item.name , region:item.region }
         }); 
-        
         search_country(data);
         search_by_region(data);
-        let label=document.querySelector(".first");
-         label.addEventListener("click",(e)=>{
-         list.classList.toggle("flex");
-        })
     }
     
       
@@ -125,5 +106,8 @@ async function Data_app() {
   
 }
  Data_app();
- 
+ let label=document.querySelector(".first");
+ label.addEventListener("click",(e)=>{
+    list.classList.toggle("flex");
+ })
  

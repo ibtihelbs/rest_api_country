@@ -115,9 +115,9 @@ async function Data_app() {
         search_country(data);
         search_by_region(data);
         let label=document.querySelector(".first");
-         label.addEventListener("click",(e)=>{
-         list.classList.toggle("flex");
-        })
+      label.addEventListener("click",(e)=>{
+       list.classList.toggle("flex");
+ })
     }
     
       

@@ -117,7 +117,7 @@ async function Data_app() {
         let label=document.querySelector(".first");
          label.addEventListener("click",(e)=>{
          list.classList.toggle("flex");
-        })
+ })
     }
     
       

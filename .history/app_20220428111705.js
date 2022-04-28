@@ -48,15 +48,9 @@ let search_by_region=(data)=>{
      })       
 }
 let findCountryIndex=(data, neighbor)=>{
-   
-   let n = neighbor.toLowerCase();
-   let includes=(e)=>{
-   return e.alpha3Code.toLowerCase().includes(n)
-   }
-   let index=data.findIndex(includes);
-   let countryName=data[index].name;
-   return {index , countryName};
-   
+    console.log(neighbor ,data)
+   let index=data.findIndex((e)=>{e.name.toLowerCase().includes(neighbor.toLowerCase)});
+   return index;
 }
 let country=(data,Gdata)=>{
    return`<img src="${data.flag}" alt="">
@@ -85,7 +79,7 @@ let country=(data,Gdata)=>{
        ${
           data.borders ?
            
-            data.borders.map(function(item){ return `<a href="country.html?id=${findCountryIndex(Gdata, item).index}">${findCountryIndex(Gdata, item).countryName}</a>`}).join(" "): 
+            data.borders.map(function(item){ return `<a href="country.html?id=${findCountryIndex(Gdata, item)}">`+item+"</a>"}).join(" "): 
              `<button disabled="disabled">this is an island</button>`}
        
        </div>
@@ -96,11 +90,11 @@ let country=(data,Gdata)=>{
 async function Data_app() {
     const response = await fetch('https://restcountries.com/v2/all');
     const data = await response.json();
-    console.log(data)
+    
    
     if(country_id){
         country_info= data.map((item, index)=>{
-            return{name: item.name, alpha3Code:item.alpha3Code}
+            return{name:item.name}
         })
         
         main.innerHTML =country(data[country_id],country_info);
@@ -114,10 +108,6 @@ async function Data_app() {
         
         search_country(data);
         search_by_region(data);
-        let label=document.querySelector(".first");
-         label.addEventListener("click",(e)=>{
-         list.classList.toggle("flex");
-        })
     }
     
       
@@ -125,5 +115,8 @@ async function Data_app() {
   
 }
  Data_app();
- 
+ let label=document.querySelector(".first");
+ label.addEventListener("click",(e)=>{
+    list.classList.toggle("flex");
+ })
  

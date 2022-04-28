@@ -54,8 +54,8 @@ let findCountryIndex=(data, neighbor)=>{
    return e.alpha3Code.toLowerCase().includes(n)
    }
    let index=data.findIndex(includes);
-   let countryName=data[index].name;
-   return {index , countryName};
+   console.log(data[index])
+   return index;
    
 }
 let country=(data,Gdata)=>{
@@ -85,7 +85,7 @@ let country=(data,Gdata)=>{
        ${
           data.borders ?
            
-            data.borders.map(function(item){ return `<a href="country.html?id=${findCountryIndex(Gdata, item).index}">${findCountryIndex(Gdata, item).countryName}</a>`}).join(" "): 
+            data.borders.map(function(item){ return `<a href="country.html?id=${findCountryIndex(Gdata, item)}">`+item+"</a>"}).join(" "): 
              `<button disabled="disabled">this is an island</button>`}
        
        </div>
@@ -114,10 +114,6 @@ async function Data_app() {
         
         search_country(data);
         search_by_region(data);
-        let label=document.querySelector(".first");
-         label.addEventListener("click",(e)=>{
-         list.classList.toggle("flex");
-        })
     }
     
       
@@ -125,5 +121,8 @@ async function Data_app() {
   
 }
  Data_app();
- 
+ let label=document.querySelector(".first");
+ label.addEventListener("click",(e)=>{
+    list.classList.toggle("flex");
+ })
  
