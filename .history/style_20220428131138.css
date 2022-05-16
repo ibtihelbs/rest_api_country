@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+
+.Dark-mode{
+    --DM-element: hsl(209, 23%, 22%);/* (Dark Mode Elements)*/
+    --text: hsl(0, 0%, 100%);/* (Dark Mode Text & Light Mode Elements)**/
+    --DM-BG: hsl(207, 26%, 17%);/* (Dark Mode Background)*/  
+    --LM-input:--DM-element;
+}
+.Light-mode{
+    --text: hsl(204, 12%, 8%); /* (Light Mode Text):*/
+    --DM-BG: hsl(0, 0%, 98%);/* (Light Mode Input)**/
+    --DM-element: hsl(0, 0%, 100%);
+    --LM-input: hsl(0, 0%, 52%);/* (Light Mode Input)*/
+}
+*{
+    font-family: 'Nunito Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    
+    background-color: var(--DM-BG);
+    color: var(--text);
+   
+}
+ul{
+    list-style: none;
+}
+li:hover{
+   cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: var(--text);
+    background-color: var(--DM-element);
+}
+nav{
+    background-color: var(--DM-element);
+    padding: auto 1rem ;  
+}
+button{
+    height:40px;
+    padding:.5rem 1rem;
+    background-color: var(--DM-element);
+    color:var(--text);
+    border-color: transparent;
+}
+
+.Light-mode{
+    background-color: var(--LM-BG);
+    color: var(--LM-text);
+}
+.toggle{
+    display: inline;
+}
+.moon{
+    fill:var(--text);
+}
+.info{
+    padding:1rem;
+    height:50%;
+}
+
+
+.name{
+    padding-bottom:.5rem ;
+}
+.flex-layout{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.searchBar{
+    height: 100px;
+}
+.searchBar>*{
+    height:100%;
+}
+section{
+    padding: 2rem;
+}
+/*countries card**/
+svg{
+    width:20px;
+    fill: var(--text);
+}
+img{
+    width: 100%;
+}
+#countries{
+    display:flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.country{
+    flex:1 1 22%;
+    background-color: var(--DM-element);
+    box-shadow:  0 4px 8px 0 var();
+}
+.country >*{
+    height:50%;
+}
+img{
+    height:100%;
+}
+.hidden{
+    display:none;
+    width:0;
+}
+
+
+/*country details country-wrap**/
+main{
+    display:flex;
+    gap: 3rem;
+}
+main>*{
+    flex:1 1 50%;
+    
+}
+.country-wrap{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+.x2-column:last-child {
+  grid-column: span 2;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.x2-column:nth-child(1){
+    grid-column: span 2;  
+}
+#search::placeholder{
+   background-image:url('images/magnifying-glass-solid.svg');
+   background-repeat: no-repeat;
+   background-position: left;
+   padding: 1rem;
+}
+#searchByRegion{
+    position: relative;
+    width: 200px;
+}
+label{
+    background-color: var(--DM-element); 
+    width:100% !important;
+    display: inline-block;
+    margin-bottom: .2rem;
+    height:100%;
+    margin-top: auto;
+}
+.regions{
+    display:none;
+    z-index: 5;
+    flex-direction: column;
+    position:absolute;
+    background-color: var(--DM-element);
+    float: right;
+    width:100%;
+    justify-content: centre;
+    padding: .5rem;
+    transition: display ease-in-out .5s;
+}
+.regions li{
+   height:30px; 
+}
+.flex{
+    display:flex;
+}
