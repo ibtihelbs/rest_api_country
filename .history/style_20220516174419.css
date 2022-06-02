@@ -31,8 +31,7 @@ ul{
 li:hover{
    cursor: pointer;
 }
-
-input, p{
+p{
     color: var(--text);
 }
 a{
@@ -158,14 +157,15 @@ main>*{
   background-color: var(--DM-element);
     border:none;
 }
-
-.searchGroup{
-    background-color: var(--DM-element);
-    padding: 0 2rem;
+#search::placeholder{
+   background-image:url('images/magnifying-glass-solid.svg');
+   background-repeat: no-repeat;
+   background-position: left;
+   color:var(--text)
+   /*! height:100%; */
 }
-.searchGroup i{
-    color:var(--text);
-    padding:.5rem;
+.searchGroup{
+    display:inline-block;
 }
 #searchByRegion{
     position: relative;

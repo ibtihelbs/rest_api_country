@@ -31,8 +31,7 @@ ul{
 li:hover{
    cursor: pointer;
 }
-
-input, p{
+p{
     color: var(--text);
 }
 a{
@@ -158,15 +157,14 @@ main>*{
   background-color: var(--DM-element);
     border:none;
 }
+#search::placeholder{
+   background-image:url('images/magnifying-glass-solid.svg');
+   background-repeat: no-repeat;
+   background-position: left;
+   
+   /*! height:100%; */
+}
 
-.searchGroup{
-    background-color: var(--DM-element);
-    padding: 0 2rem;
-}
-.searchGroup i{
-    color:var(--text);
-    padding:.5rem;
-}
 #searchByRegion{
     position: relative;
     width: 200px;
@@ -199,18 +197,6 @@ label{
     display:flex;
 }
 @media (max-width:800px){
-    section {
-        
-    }
-    .info h1{
-        font-size: 20px; 
-    }
-    p{
-        font-size: 14px;
-    }
-    h4{
-        font-size: 15px;
-    }
     .searchBar{
     flex-direction: column;
     gap: 1rem;    
@@ -230,7 +216,7 @@ label{
     
 @media (max-width:500px) {
     nav h1{
-        font-size: 15px !important;
+        font-size: 20px !important;
     }
     .x2-column{
         grid-column: span 2;
