@@ -228,6 +228,8 @@ label{
     nav h1{
         font-size: 15px !important;
     }
+    #search{
+        padding: .5rem !important;  }
     .x2-column{
         grid-column: span 2;
     }
